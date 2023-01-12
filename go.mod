@@ -10,4 +10,5 @@ require (
 	github.com/olekukonko/tablewriter v0.0.5
 	github.com/yuin/goldmark v1.5.3
 	github.com/yuin/goldmark-emoji v1.0.1
+	github.com/yuin/goldmark-meta v1.1.0
 )

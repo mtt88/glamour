@@ -1,0 +1,9 @@
+---
+subcategory: "Subcategory name"
+layout: "layout name"
+page_title: "Some title"
+description: |-
+  Here is a description
+---
+some content
+

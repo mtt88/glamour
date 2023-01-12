@@ -218,3 +218,32 @@ func TestCapitalization(t *testing.T) {
 		t.Errorf("Rendered output doesn't match!\nExpected: `\n%s`\nGot: `\n%s`\n", td, b)
 	}
 }
+
+func TestMetadata(t *testing.T) {
+	r, err := NewTermRenderer(
+		WithHideMetadata(),
+	)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	in, err := ioutil.ReadFile("testdata/metadata.in")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	b, err := r.Render(string(in))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	// expected outcome
+	td, err := ioutil.ReadFile("testdata/metadata.test")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if string(td) != b {
+		t.Errorf("Rendered output doesn't match!\nExpected: `\n%s`\nGot: `\n%s`\n", td, b)
+	}
+}

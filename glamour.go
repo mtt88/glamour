@@ -10,6 +10,7 @@ import (
 	"github.com/muesli/termenv"
 	"github.com/yuin/goldmark"
 	emoji "github.com/yuin/goldmark-emoji"
+	meta "github.com/yuin/goldmark-meta"
 	"github.com/yuin/goldmark/extension"
 	"github.com/yuin/goldmark/parser"
 	"github.com/yuin/goldmark/renderer"
@@ -197,6 +198,14 @@ func WithPreservedNewLines() TermRendererOption {
 func WithEmoji() TermRendererOption {
 	return func(tr *TermRenderer) error {
 		emoji.New().Extend(tr.md)
+		return nil
+	}
+}
+
+// WithHideMetadata disables a TermRender's metadata rendering.
+func WithHideMetadata() TermRendererOption {
+	return func(tr *TermRenderer) error {
+		meta.New(meta.WithStoresInDocument()).Extend(tr.md)
 		return nil
 	}
 }
